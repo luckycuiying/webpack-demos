@@ -42,9 +42,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!******************!*\
-  !*** ./main.jsx ***!
-  \******************/
+/*!*****************!*\
+  !*** ./main.js ***!
+  \*****************/
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65,115 +65,176 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // document.write('<h1>Hello World111</h1>');
 	
-	var Header = function (_Component) {
-	    _inherits(Header, _Component);
 	
-	    function Header(props) {
-	        _classCallCheck(this, Header);
+	var DateN = function (_React$Component) {
+	    _inherits(DateN, _React$Component);
 	
-	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+	    function DateN() {
+	        _classCallCheck(this, DateN);
 	
-	        _this.state = {
-	            success: false
-	        };
-	        return _this;
+	        return _possibleConstructorReturn(this, (DateN.__proto__ || Object.getPrototypeOf(DateN)).apply(this, arguments));
 	    }
 	
-	    _createClass(Header, [{
+	    _createClass(DateN, [{
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(newProps) {
+	            console.log('nnnwill receive ');
+	        }
+	    }, {
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            console.log('nnnshould update');
+	            return true;
+	        }
+	    }, {
+	        key: 'componentWillUpdate',
+	        value: function componentWillUpdate() {
+	            console.log('nnnwill update');
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            console.log('render header');
+	            console.log('nnnndateM changed');
+	            // 获取父元素里面的属性名 date
+	            return _react2.default.createElement(
+	                'h2',
+	                null,
+	                'It is ',
+	                this.props.date,
+	                '.'
+	            );
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log('nnndidUpdate');
+	        }
+	    }]);
+	
+	    return DateN;
+	}(_react2.default.Component);
+	
+	var DateM = function (_React$Component2) {
+	    _inherits(DateM, _React$Component2);
+	
+	    function DateM() {
+	        _classCallCheck(this, DateM);
+	
+	        return _possibleConstructorReturn(this, (DateM.__proto__ || Object.getPrototypeOf(DateM)).apply(this, arguments));
+	    }
+	
+	    _createClass(DateM, [{
+	        key: 'render',
+	
+	        // componentWillReceiveProps(newProps){
+	        //     console.log('will receive ')
+	        // }
+	        // shouldComponentUpdate(){
+	        //     console.log('should update');
+	        //     return true;
+	        // }
+	        // componentWillUpdate(){
+	        //     console.log('will update')
+	        // }
+	        value: function render() {
+	            console.log('dateM changed');
+	            return _react2.default.createElement(
+	                'h2',
+	                null,
+	                'It is ',
+	                this.props.date.toLocaleTimeString(),
+	                '.'
+	            );
+	        }
+	        // componentDidUpdate(){
+	        //     console.log('didUpdate')
+	        // }
+	
+	
+	    }]);
+	
+	    return DateM;
+	}(_react2.default.Component);
+	
+	// 没有定时器只能获取一次时间，没能改变
+	
+	
+	var Clock = function (_React$Component3) {
+	    _inherits(Clock, _React$Component3);
+	
+	    function Clock(props) {
+	        _classCallCheck(this, Clock);
+	
+	        var _this3 = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
+	
+	        _this3.state = { date: new Date(), i: 0 };
+	        return _this3;
+	    }
+	
+	    _createClass(Clock, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this4 = this;
+	
+	            this.timerID = setInterval(function () {
+	                return _this4.tick();
+	            }, 3000);
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            clearInterval(this.timerID);
+	        }
+	    }, {
+	        key: 'tick',
+	        value: function tick() {
+	            console.log('start tick');
+	            // 只是赋值没有调用this.setState()的方法
+	            // this.state.date = new Date();
+	            // 赋值并调用this.setState()
+	            this.setState({
+	                date: new Date()
+	            });
+	        }
+	    }, {
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            // console.log('should update');
+	            return true;
+	        }
+	    }, {
+	        key: 'componentWillUpdate',
+	        value: function componentWillUpdate() {
+	            // console.log('will update')
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                'header ',
-	                this.props.title
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Hello, world!'
+	                ),
+	                _react2.default.createElement(DateN, { date: this.state.i })
 	            );
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            // console.log('didUpdate')
 	        }
 	    }]);
 	
-	    return Header;
-	}(_react.Component);
+	    return Clock;
+	}(_react2.default.Component);
 	
-	var MainBody = function (_Component2) {
-	    _inherits(MainBody, _Component2);
-	
-	    function MainBody() {
-	        _classCallCheck(this, MainBody);
-	
-	        return _possibleConstructorReturn(this, (MainBody.__proto__ || Object.getPrototypeOf(MainBody)).apply(this, arguments));
-	    }
-	
-	    _createClass(MainBody, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'MainBody'
-	            );
-	        }
-	    }]);
-	
-	    return MainBody;
-	}(_react.Component);
-	
-	var Footer = function (_Component3) {
-	    _inherits(Footer, _Component3);
-	
-	    function Footer() {
-	        _classCallCheck(this, Footer);
-	
-	        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
-	    }
-	
-	    _createClass(Footer, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'Footer'
-	            );
-	        }
-	    }]);
-	
-	    return Footer;
-	}(_react.Component);
-	
-	var Demo = function (_Component4) {
-	    _inherits(Demo, _Component4);
-	
-	    function Demo(props) {
-	        _classCallCheck(this, Demo);
-	
-	        var _this4 = _possibleConstructorReturn(this, (Demo.__proto__ || Object.getPrototypeOf(Demo)).call(this, props));
-	
-	        _this4.state = {
-	            success: false
-	        };
-	        return _this4;
-	    }
-	
-	    _createClass(Demo, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'DemoPage' },
-	                _react2.default.createElement(Header, { title: '首页' }),
-	                _react2.default.createElement(MainBody, null),
-	                _react2.default.createElement(Footer, null)
-	            );
-	        }
-	    }]);
-	
-	    return Demo;
-	}(_react.Component);
-	
-	_reactDom2.default.render(_react2.default.createElement(Demo, null), document.querySelector('#wrapper'));
+	_reactDom2.default.render(_react2.default.createElement(Clock, null), document.getElementById('root'));
+	//为一个类添加局部状态
 
 /***/ }),
 /* 1 */
