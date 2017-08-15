@@ -97,7 +97,7 @@
 	        key: 'render',
 	        value: function render() {
 	            console.log('nnnndateM changed');
-	            // 获取父元素里面的属性名 date
+	            // 获取父元素里面的属性名 dateshijian
 	            return _react2.default.createElement(
 	                'h2',
 	                null,
