@@ -75,7 +75,8 @@
 	// <button onClick = {activateLasers}>  
 	//   Activate Lasers
 	// </button>
-	
+	// 你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定this 的。
+	// 如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
 	var Toggle = function (_React$Component) {
 	    _inherits(Toggle, _React$Component);
 	
@@ -85,6 +86,8 @@
 	        var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
 	
 	        _this.state = { isToggleOn: true };
+	        console.log(_this); //这时候的this 指的是 Toggle
+	        // 通过这行代码类似call， 的用法把 Toggle 绑定给handleClick（）
 	        _this.handleClick = _this.handleClick.bind(_this);
 	        return _this;
 	    }
@@ -97,6 +100,7 @@
 	                    isToggleOn: !prevState.isToggleOn
 	                };
 	            });
+	            console.log(this);
 	        }
 	    }, {
 	        key: 'render',
